@@ -1,15 +1,22 @@
 import json
 import os
-from src.products import Product, Category
+from typing import Any
 
-def read_json(path):
+from src.products import Category, Product
+
+
+def read_json(path: str) -> dict:
+    """Функция чтения данных из json файла"""
+
     full_path = os.path.abspath(path)
-    with open(full_path,"r", encoding="UTF-8") as file:
+    with open(full_path, "r", encoding="UTF-8") as file:
         data = json.load(file)
         return data
 
 
-def write_json(data):
+def object_from_json(data: dict) -> list[Any]:
+    """Функция для создания объекта классов"""
+
     list_product = []
     for date in data:
         list_products = []
@@ -22,8 +29,6 @@ def write_json(data):
 
 if __name__ == "__main__":
     json_file = read_json("../data/products.json")
-    result = write_json(json_file)
+    result = object_from_json(json_file)
     print(result[0].name)
     print(result[0].products)
-
-

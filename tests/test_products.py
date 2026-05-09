@@ -1,4 +1,3 @@
-
 def test_product_info(product_info2):
     assert product_info2.name == "Samsung Galaxy S23 Ultra"
     assert product_info2.description == "Телефон б/у(10 лет)"
@@ -23,6 +22,3 @@ def test_categories_info(category_info1, category_info2):
 
 
 # def test_product_count(category_info1, category_info2):
-
-
-
