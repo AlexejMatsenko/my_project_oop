@@ -23,6 +23,16 @@ files = [
 ]
 
 [[package]]
+name = "mock-open"
+version = "1.4.0"
+description = "A better mock for file I/O"
+optional = false
+python-versions = "*"
+files = [
+    {file = "mock-open-1.4.0.tar.gz", hash = "sha256:c3ecb6b8c32a5899a4f5bf4495083b598b520c698bba00e1ce2ace6e9c239100"},
+]
+
+[[package]]
 name = "packaging"
 version = "26.2"
 description = "Core utilities for Python packages"
@@ -86,4 +96,4 @@ dev = ["argcomplete", "attrs (>=19.2)", "hypothesis (>=3.56)", "mock", "requests
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.14"
-content-hash = "bc8832f374a9b196c044f96021e1496946883713be254697edbc629fc3314c2b"
+content-hash = "e9e07249073efcf96678cfe593d5eef9db95dfd3a8ab35ab8e94934897d58911"

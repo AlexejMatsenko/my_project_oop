@@ -19,6 +19,3 @@ def test_categories_info(category_info1, category_info2):
 
     assert category_info1.product_count == 5
     assert category_info2.product_count == 5
-
-
-# def test_product_count(category_info1, category_info2):
