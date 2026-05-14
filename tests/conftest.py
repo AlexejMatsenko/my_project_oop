@@ -49,3 +49,15 @@ def object_json():
             ],
         }
     ]
+
+
+@pytest.fixture
+def product_dict():
+    return Product.new_product(
+        {
+            "name": "Samsung Galaxy S23 Ultra",
+            "description": "256GB, Серый цвет, 200MP камера",
+            "price": 180000.0,
+            "quantity": 5,
+        }
+    )

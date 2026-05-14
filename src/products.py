@@ -50,7 +50,7 @@ class Category(Product):
 
     def add_product(self, product):
         self.__products.append(product)
-        self.product_count += 1
+        Category.product_count += 1
 
     @property
     def products(self):

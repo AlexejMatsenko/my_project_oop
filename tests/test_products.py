@@ -29,3 +29,15 @@ def test_products_price_setter(capsys, product_info2):
     product_info2.price = 0
     messedg = capsys.readouterr()
     assert messedg.out.strip() == "Цена не должна быть нулевая или отрицательная"
+
+
+def test_add_product_count(category_info1, product_info2):
+    category_info1.add_product(product_info2)
+    assert len(category_info1.products_in_list) == 4
+
+
+def test_new_product_dict(product_dict):
+    assert product_dict.name == "Samsung Galaxy S23 Ultra"
+    assert product_dict.description == "256GB, Серый цвет, 200MP камера"
+    assert product_dict.price == 180000.0
+    assert product_dict.quantity == 5
