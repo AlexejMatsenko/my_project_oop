@@ -16,7 +16,7 @@ if __name__ == "__main__":
     category1.add_product(product4)
     print(category1.products)
     print(category1.product_count)
-    # #
+
     new_product = Product.new_product(
         {
             "name": "Samsung Galaxy S23 Ultra",
@@ -29,10 +29,10 @@ if __name__ == "__main__":
     print(new_product.description)
     print(new_product.price)
     print(new_product.quantity)
-    # #
+
     new_product.price = 800
     print(new_product.price)
-    #
+
     new_product.price = -100
     print(new_product.price)
     new_product.price = 0
