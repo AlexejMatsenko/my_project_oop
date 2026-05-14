@@ -11,11 +11,21 @@ def test_categories_info(category_info1, category_info2):
     assert category_info1.description == "Телефоны разные, от новых до убитых"
     assert category_info2.description == "Новые"
 
-    assert len(category_info1.products) == 3
-    assert len(category_info2.products) == 2
+    assert len(category_info1.products_in_list) == 3
+    assert len(category_info2.products_in_list) == 2
 
     assert category_info1.category_count == 2
     assert category_info2.category_count == 2
 
     assert category_info1.product_count == 5
     assert category_info2.product_count == 5
+
+
+def test_products_info_property(category_info2):
+    assert category_info2.products == ("Pazz, 20140 руб. Остаток: 4 шт.\n" "Xiaomi, 27000 руб. Остаток: 6 шт.\n")
+
+
+def test_products_price_setter(capsys, product_info2):
+    product_info2.price = 0
+    messedg = capsys.readouterr()
+    assert messedg.out.strip() == "Цена не должна быть нулевая или отрицательная"

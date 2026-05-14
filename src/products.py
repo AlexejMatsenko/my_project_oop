@@ -17,13 +17,15 @@ class Product:
         return self.__price
 
     @price.setter
-    def price(self, price):
+    def price(self, price: float | int):
         if price <= 0:
             print("Цена не должна быть нулевая или отрицательная")
             return
+        elif price < self.__price:
+            user_input = input("Согласны ли вы понизить текущую цену (у/no)?\n")
+            if user_input == "no":
+                return
         self.__price = price
-
-
 
     @classmethod
     def new_product(cls, product: dict):
@@ -46,7 +48,6 @@ class Category(Product):
         Category.category_count += 1
         Category.product_count += len(products) if products else 0
 
-
     def add_product(self, product):
         self.__products.append(product)
         self.product_count += 1
@@ -58,3 +59,6 @@ class Category(Product):
             product_str += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
         return product_str
 
+    @property
+    def products_in_list(self):
+        return self.__products

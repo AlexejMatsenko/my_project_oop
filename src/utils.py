@@ -23,10 +23,3 @@ def object_from_json(data: dict) -> list[Any]:
         date["products"] = list_products
         list_product.append(Category(**date))
     return list_product
-
-
-# if __name__ == "__main__":
-#     json_file = read_json("../data/products.json")
-#     result = object_from_json(json_file)
-#     print(result[0].name)
-#     print(result[0].products)
