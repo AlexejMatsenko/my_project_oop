@@ -31,6 +31,7 @@ def category_info2():
 def product_info2():
     return Product("Samsung Galaxy S23 Ultra", "Телефон б/у(10 лет)", 1000, 1)
 
+
 @pytest.fixture
 def product_info3():
     return Product("Iphone 15", "512GB, Gray space", 210000.0, 8)

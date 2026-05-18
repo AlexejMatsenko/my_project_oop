@@ -1,5 +1,5 @@
-import pytest
 from unittest.mock import patch
+
 
 def test_product_info(product_info2):
     assert product_info2.name == "Samsung Galaxy S23 Ultra"
@@ -25,7 +25,7 @@ def test_categories_info(category_info1, category_info2):
 
 
 def test_products_info_property(category_info2):
-    assert category_info2.products == 'Pazz, 20140 руб. Остаток: 4 шт.\nXiaomi, 27000 руб. Остаток: 6 шт.\n'
+    assert category_info2.products == "Pazz, 20140 руб. Остаток: 4 шт.\nXiaomi, 27000 руб. Остаток: 6 шт.\n"
 
 
 def test_products_price_setter(capsys, product_info2):
@@ -47,11 +47,11 @@ def test_new_product_dict(product_dict):
 
 
 def test_str_category(category_info2):
-    assert category_info2.__str__() == '\nТелевизоры, количество продуктов: 10 шт.\n'
+    assert category_info2.__str__() == "\nТелевизоры, количество продуктов: 10 шт.\n"
 
 
 def test_add_category(product_info2, product_info3):
-   assert product_info2.__add__(product_info3) == 1681000.0
+    assert product_info2.__add__(product_info3) == 1681000.0
 
 
 @patch("builtins.input", return_value="y")
@@ -59,7 +59,3 @@ def test_setter_price_yes(mocked_input, product_info2, price=100):
     if mocked_input:
         product_info2.price = product_info2.price - price
         assert product_info2.price == 900
-
-
-
-
