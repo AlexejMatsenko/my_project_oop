@@ -12,6 +12,9 @@ class Product:
         self.__price = price
         self.quantity = quantity
 
+    def __str__(self):
+        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
+
     @property
     def price(self):
         return self.__price
@@ -25,11 +28,14 @@ class Product:
             user_input = input("Согласны ли вы понизить текущую цену (у/no)?\n")
             if user_input == "no":
                 return
-        self.__price = price
+            self.__price = price
 
     @classmethod
     def new_product(cls, product: dict):
         return cls(product["name"], product["description"], product["price"], product["quantity"])
+
+    def __add__(self, other):
+        return self.__price * self.quantity + other.__price * other.quantity
 
 
 class Category(Product):
@@ -48,16 +54,23 @@ class Category(Product):
         Category.category_count += 1
         Category.product_count += len(products) if products else 0
 
+    def __str__(self):
+        count_quantity = 0
+        for product in self.__products:
+            count_quantity += product.quantity
+
+        return f"\n{self.name}, количество продуктов: {count_quantity} шт.\n"
+
     def add_product(self, product):
         self.__products.append(product)
         Category.product_count += 1
 
     @property
     def products(self):
-        product_str = ""
+        product_sum = ""
         for product in self.__products:
-            product_str += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
-        return product_str
+            product_sum += f"{str(product)}\n"
+        return product_sum
 
     @property
     def products_in_list(self):

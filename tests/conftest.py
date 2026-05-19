@@ -33,6 +33,11 @@ def product_info2():
 
 
 @pytest.fixture
+def product_info3():
+    return Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
+
+
+@pytest.fixture
 def object_json():
     return [
         {
