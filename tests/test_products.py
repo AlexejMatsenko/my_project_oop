@@ -1,5 +1,7 @@
 from unittest.mock import patch
 
+import pytest
+
 
 def test_product_info(product_info2):
     assert product_info2.name == "Samsung Galaxy S23 Ultra"
@@ -59,3 +61,13 @@ def test_setter_price_yes(mocked_input, product_info2, price=100):
     if mocked_input:
         product_info2.price = product_info2.price - price
         assert product_info2.price == 900
+
+
+def test_add_product_error(category_info2):
+    with pytest.raises(TypeError):
+        category_info2.add_product(1)
+
+
+def test_add_product_priice_error(category_info2):
+    with pytest.raises(TypeError):
+        category_info2.__add__(1)

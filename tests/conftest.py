@@ -1,5 +1,8 @@
 import pytest
+
+from src.lawngrass import LawnGrass
 from src.products import Product, Category
+from src.smartphone import Smartphone
 
 
 @pytest.fixture
@@ -66,3 +69,15 @@ def product_dict():
             "quantity": 5,
         }
     )
+
+
+@pytest.fixture
+def smartphone_init():
+    return Smartphone(
+        "Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5, 95.5, "S23 Ultra", 256, "Серый"
+    )
+
+
+@pytest.fixture
+def lawngrass():
+    return LawnGrass("Газонная трава", "Элитная трава для газона", 500.0, 20, "Россия", "7 дней", "Зеленый")

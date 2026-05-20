@@ -35,7 +35,10 @@ class Product:
         return cls(product["name"], product["description"], product["price"], product["quantity"])
 
     def __add__(self, other):
-        return self.__price * self.quantity + other.__price * other.quantity
+        if type(self) == type(other):
+            return self.__price * self.quantity + other.__price * other.quantity
+
+        raise TypeError
 
 
 class Category(Product):
@@ -62,6 +65,8 @@ class Category(Product):
         return f"\n{self.name}, количество продуктов: {count_quantity} шт.\n"
 
     def add_product(self, product):
+        if not isinstance(product, Product):
+            raise TypeError
         self.__products.append(product)
         Category.product_count += 1
 
