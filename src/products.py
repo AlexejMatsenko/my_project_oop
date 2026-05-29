@@ -1,4 +1,7 @@
-class Product:
+from src.base_and_mixin_product import BaseProduct, ProductMixin
+
+
+class Product(BaseProduct, ProductMixin):
     """Класс для представления продукта"""
 
     name: str
@@ -7,12 +10,15 @@ class Product:
     quantity: int
 
     def __init__(self, name, description, price, quantity):
+        # Инициализация атрибутов продукта
         self.name = name
         self.description = description
         self.__price = price
         self.quantity = quantity
+        super().__init__()
 
     def __str__(self):
+        # Метод возвращает информацию о товаре в строковом отображении.
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
     @property
@@ -20,6 +26,9 @@ class Product:
         return self.__price
 
     @price.setter
+    # В сеттере реализована проверка: в случае если цена равна или ниже нуля, выводится сообщение.
+    # В случае если цена товара понижается, добавлена логика подтверждения пользователем вручную через ввод:
+    # y (значит yes) для согласия понизить цену или n (значит no) для отмены действия.
     def price(self, price: float | int):
         if price <= 0:
             print("Цена не должна быть нулевая или отрицательная")
@@ -32,9 +41,12 @@ class Product:
 
     @classmethod
     def new_product(cls, product: dict):
+        # Класс-метод который принимает на вход параметры товара в словаре и возвращает созданный объект класса
+        # Product
         return cls(product["name"], product["description"], product["price"], product["quantity"])
 
     def __add__(self, other):
+        # Реализация сложения полной стоимости всех товаров на складе.
         if type(self) == type(other):
             return self.__price * self.quantity + other.__price * other.quantity
 
@@ -51,6 +63,7 @@ class Category(Product):
     product_count = 0
 
     def __init__(self, name, description, products=None) -> None:
+        # Инициализация атрибутов категорий
         self.name = name
         self.description = description
         self.__products = products if products else []
@@ -58,6 +71,7 @@ class Category(Product):
         Category.product_count += len(products) if products else 0
 
     def __str__(self):
+        # Метод возвращает информацию о товаре в строковом отображении.
         count_quantity = 0
         for product in self.__products:
             count_quantity += product.quantity
@@ -65,6 +79,7 @@ class Category(Product):
         return f"\n{self.name}, количество продуктов: {count_quantity} шт.\n"
 
     def add_product(self, product):
+        # Добавление продукта в зависимости от категории
         if not isinstance(product, Product):
             raise TypeError
         self.__products.append(product)

@@ -33,7 +33,7 @@ def test_products_info_property(category_info2):
 def test_products_price_setter(capsys, product_info2):
     product_info2.price = 0
     messedg = capsys.readouterr()
-    assert messedg.out.strip() == "Цена не должна быть нулевая или отрицательная"
+    assert messedg.out.strip().split("\n")[-1] == "Цена не должна быть нулевая или отрицательная"
 
 
 def test_add_product_count(category_info1, product_info2):
