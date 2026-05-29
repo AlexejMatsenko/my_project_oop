@@ -14,7 +14,10 @@ class Product(BaseProduct, ProductMixin):
         self.name = name
         self.description = description
         self.__price = price
-        self.quantity = quantity
+        if quantity <= 0:
+            raise ValueError("Товар с нулевым количеством не может быть добавлен")
+        else:
+            self.quantity = quantity
         super().__init__()
 
     def __str__(self):
@@ -95,3 +98,10 @@ class Category(Product):
     @property
     def products_in_list(self):
         return self.__products
+
+    def middle_price(self):
+        try:
+            average_price = sum([product.quantity for product in self.__products]) / len(self.__products)
+        except ZeroDivisionError:
+            return 0
+        return average_price

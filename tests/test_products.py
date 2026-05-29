@@ -1,5 +1,5 @@
 from unittest.mock import patch
-
+from src.products import Product
 import pytest
 
 
@@ -71,3 +71,16 @@ def test_add_product_error(category_info2):
 def test_add_product_priice_error(category_info2):
     with pytest.raises(TypeError):
         category_info2.__add__(1)
+
+
+def test_quantity_error():
+    with pytest.raises(ValueError, match="Товар с нулевым количеством не может быть добавлен"):
+        Product("Iphone 15", "512GB, Gray space", 210000.0, 0)
+
+
+def test_ZeroDivision_Error(category_info_arror):
+    assert category_info_arror.middle_price() == 0
+
+
+def test_middle_price(category_info2):
+    assert category_info2.middle_price() == 5
