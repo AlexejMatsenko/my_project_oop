@@ -83,4 +83,4 @@ def test_ZeroDivision_Error(category_info_arror):
 
 
 def test_middle_price(category_info2):
-    assert category_info2.middle_price() == 5
+    assert category_info2.middle_price() == 23570.0

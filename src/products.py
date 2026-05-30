@@ -100,8 +100,9 @@ class Category(Product):
         return self.__products
 
     def middle_price(self):
+        # Метод подсчитывает средний ценник всех товаров
         try:
-            average_price = sum([product.quantity for product in self.__products]) / len(self.__products)
+            average_price = round(sum([product.price for product in self.__products]) / len(self.__products), 2)
         except ZeroDivisionError:
             return 0
         return average_price
