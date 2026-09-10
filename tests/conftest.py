@@ -81,3 +81,8 @@ def smartphone_init():
 @pytest.fixture
 def lawngrass():
     return LawnGrass("Газонная трава", "Элитная трава для газона", 500.0, 20, "Россия", "7 дней", "Зеленый")
+
+
+@pytest.fixture
+def category_info_arror():
+    return Category(name="Телевизоры", description="Новые", products=[])
